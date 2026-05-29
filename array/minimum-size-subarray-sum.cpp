@@ -9,8 +9,13 @@ public:
         while(j<n){
             sum = sum+nums[j];
             while(sum>=target){
+                if(sum>target){
                 ans = min(ans,j-i+1);
-                sum = sum-nums[i];
+                }
+                else if(sum == target){
+                    ans = min(ans,j-i+1);
+                }
+                sum-=nums[i];
                 i++;
             }
             j++;
