@@ -6,27 +6,34 @@ public:
         int i ,j=0;
         long long sum = 0;
         long long MAX =INT_MIN;
+        int curr_sum = 0;
         for(int i =0;i<k;i++){
             freq[nums[i]]++;
+            sum = sum+nums[i];
             if(freq[nums[i]]>1){
-                MAX = 0;
-                sum =0;
-                break;
+                curr_sum=0;
             }
             else{
-            sum = sum+nums[i];
+            curr_sum = sum;
             }
-        }           
+        }     
+        if(curr_sum!=sum) {
+            MAX = 0;
+        }   
+        else{
         MAX  = max(MAX,sum);
+        }
         i=0;
+        int a = 0;
         for(int j=k;j<n;j++){
             freq[nums[j]]++;
             freq[nums[i]]--;
             sum = sum+nums[j];
             sum = sum-nums[i];
+            a=i;
             i++;
-            if(freq[nums[j]]>1){    
-                break;
+            if(freq[nums[j]]>1||freq[a]>1){    
+                continue;
             }
             MAX  = max(MAX,sum);             
         }
