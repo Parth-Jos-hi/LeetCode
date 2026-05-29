@@ -24,15 +24,13 @@ public:
         MAX  = max(MAX,sum);
         }
         i=0;
-        int a = 0;
         for(int j=k;j<n;j++){
             freq[nums[j]]++;
             freq[nums[i]]--;
             sum = sum+nums[j];
             sum = sum-nums[i];
-            a=i;
             i++;
-            if(freq[nums[j]]>1||freq[a]>1){    
+            if(freq[nums[j]]>1||freq[nums[i]]>1){    
                 continue;
             }
             MAX  = max(MAX,sum);             
